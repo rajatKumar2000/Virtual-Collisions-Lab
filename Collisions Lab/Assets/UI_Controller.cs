@@ -95,5 +95,7 @@ public class UI_Controller : MonoBehaviour
 
         rbCartOne.AddForce(Vector3.right * force_1);
         rbCartTwo.AddForce(Vector3.right * force_2);
+
+        //hassan is a big dodo
     }
 }

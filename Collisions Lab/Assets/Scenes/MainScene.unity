@@ -4943,7 +4943,7 @@ MonoBehaviour:
   cartOneMat: {fileID: 2100000, guid: 7ea4b1967d8e0154d9e50b2bfe8a08d7, type: 2}
   cartTwoMat: {fileID: 2100000, guid: 3355cea196f52e445835104b079d3b2f, type: 2}
   stopDrag: 500
-  normalDrag: 0.1
+  normalDrag: 0.3
 --- !u!1 &1573818561
 GameObject:
   m_ObjectHideFlags: 0
