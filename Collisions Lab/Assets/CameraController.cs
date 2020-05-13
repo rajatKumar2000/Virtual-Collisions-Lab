@@ -9,8 +9,7 @@ public class CameraController : MonoBehaviour
     public float movementSpeed = 1;
     public float fastMovementSpeed = 1;
     public float rotationSpeed = 1;
-    public GameObject myCanvas;
-    public Canvas test;
+    public GameObject myPanel;
 
     private float x_rot;
     private float y_rot;
@@ -43,9 +42,9 @@ public class CameraController : MonoBehaviour
         transform.position += (forward_vector_change * forwardPos + right_vector_change * horizontalPos + UnityEngine.Vector3.up * verticalPos) * speed * Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.R))
-            myCanvas.SetActive(!myCanvas.activeSelf);
+            myPanel.SetActive(!myPanel.activeSelf);
             
-        if (!myCanvas.activeSelf)
+        if (!myPanel.activeSelf)
         {
             x_rot += verticalRotation * rotationSpeed;
             x_rot = Mathf.Clamp(x_rot, -20, 20);
