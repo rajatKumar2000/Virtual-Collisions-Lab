@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
     public float movementSpeed = 1;
     public float fastMovementSpeed = 1;
     public float rotationSpeed = 1;
+    public GameObject myCanvas;
+    public Canvas test;
 
     private float x_rot;
     private float y_rot;
@@ -40,12 +42,19 @@ public class CameraController : MonoBehaviour
 
         transform.position += (forward_vector_change * forwardPos + right_vector_change * horizontalPos + UnityEngine.Vector3.up * verticalPos) * speed * Time.deltaTime;
 
-        x_rot += verticalRotation * rotationSpeed;
-        x_rot = Mathf.Clamp(x_rot, -20, 20);
+        if (Input.GetKeyDown(KeyCode.R))
+            myCanvas.SetActive(!myCanvas.activeSelf);
+            
+        if (!myCanvas.activeSelf)
+        {
+            x_rot += verticalRotation * rotationSpeed;
+            x_rot = Mathf.Clamp(x_rot, -20, 20);
 
-        y_rot += horizontalRotation * rotationSpeed;
-        y_rot = Mathf.Clamp(y_rot, -360, 360);
+            y_rot += horizontalRotation * rotationSpeed;
+            y_rot = Mathf.Clamp(y_rot, -360, 360);
 
-        transform.localEulerAngles = new UnityEngine.Vector3(-x_rot, y_rot, 0);        
+            transform.localEulerAngles = new UnityEngine.Vector3(-x_rot, y_rot, 0);
+        }
+           
     }
 }
