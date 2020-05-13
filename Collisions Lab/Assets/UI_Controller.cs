@@ -80,6 +80,9 @@ public class UI_Controller : MonoBehaviour
 
         rbCartOne.velocity = new Vector3(0,0,0);
         rbCartTwo.velocity = new Vector3(0,0,0);
+
+        rbCartOne.angularVelocity = new Vector3(0, 0, 0);
+        rbCartTwo.angularVelocity = new Vector3(0, 0, 0);
     }
 
     private void applyForce() 
