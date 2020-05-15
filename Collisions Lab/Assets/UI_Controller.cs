@@ -31,6 +31,10 @@ public class UI_Controller : MonoBehaviour
 
     public float stopDrag = 500;
     public float normalDrag = 0.1f;
+    public float timeOfAppliedForce = 0;
+
+    private float force_1;
+    private float force_2;
 
     // Start is called before the first frame update
     void Start()
@@ -69,14 +73,14 @@ public class UI_Controller : MonoBehaviour
         float mass_1 = float.Parse(txtMass1.text);
         float mass_2 = float.Parse(txtMass2.text);
 
-        cartOne.transform.position = new Vector3(x_coord_1, 1, 0); //1.7f
+        cartOne.transform.position = new Vector3(x_coord_1, 1, 0); //1.7f for cartV2 object
         cartTwo.transform.position = new Vector3(x_coord_2, 1, 0);
 
         cartOne.transform.localEulerAngles = new Vector3(0, 0, 0);
         cartTwo.transform.localEulerAngles = new Vector3(0, 0, 0);
 
-        rbCartOne.drag = stopDrag;
-        rbCartTwo.drag = stopDrag;
+       // rbCartOne.drag = stopDrag;
+        //rbCartTwo.drag = stopDrag;
 
         rbCartOne.mass = mass_1;
         rbCartTwo.mass = mass_2;
@@ -90,14 +94,24 @@ public class UI_Controller : MonoBehaviour
 
     private void applyForce() 
     {
-        float force_1 = float.Parse(txtForce1.text);
-        float force_2 = float.Parse(txtForce2.text);
+        force_1 = float.Parse(txtForce1.text);
+        force_2 = float.Parse(txtForce2.text);
 
-        rbCartOne.drag = normalDrag;
-        rbCartTwo.drag = normalDrag;
+       // rbCartOne.drag = normalDrag;
+       // rbCartTwo.drag = normalDrag;
 
-        rbCartOne.AddForce(Vector3.right * force_1);
-        rbCartTwo.AddForce(Vector3.right * force_2);
+        timeOfAppliedForce = 1f;
+    }
 
+    private void FixedUpdate()
+    {
+        if (timeOfAppliedForce > 0)
+        {
+            rbCartOne.AddForce(Vector3.right * force_1);
+            rbCartTwo.AddForce(Vector3.right * force_2);
+            Debug.Log(rbCartOne.velocity.x);
+        }
+
+        timeOfAppliedForce -= Time.fixedDeltaTime;
     }
 }
