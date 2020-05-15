@@ -69,8 +69,11 @@ public class UI_Controller : MonoBehaviour
         float mass_1 = float.Parse(txtMass1.text);
         float mass_2 = float.Parse(txtMass2.text);
 
-        cartOne.transform.position = new Vector3(x_coord_1, 1,0);
+        cartOne.transform.position = new Vector3(x_coord_1, 1, 0); //1.7f
         cartTwo.transform.position = new Vector3(x_coord_2, 1, 0);
+
+        cartOne.transform.localEulerAngles = new Vector3(0, 0, 0);
+        cartTwo.transform.localEulerAngles = new Vector3(0, 0, 0);
 
         rbCartOne.drag = stopDrag;
         rbCartTwo.drag = stopDrag;
@@ -96,6 +99,5 @@ public class UI_Controller : MonoBehaviour
         rbCartOne.AddForce(Vector3.right * force_1);
         rbCartTwo.AddForce(Vector3.right * force_2);
 
-        //hassan is a big dodo
     }
 }
