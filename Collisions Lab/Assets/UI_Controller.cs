@@ -144,12 +144,12 @@ public class UI_Controller : MonoBehaviour
         checkI = inelastic;
         if (checkI == true)
         {
-            e.enabled = false;
+            e.isOn = false;
         }
-        else
+        /*else
         {
             e.enabled = true;
-        }
+        }*/
 
         Debug.Log("Inelastic is: "+checkI);
         Debug.Log("elastic is: " + checkE);
@@ -160,12 +160,12 @@ public class UI_Controller : MonoBehaviour
         checkE = elastic;
         if (checkE == true)
         {
-            ie.enabled = false;
+            ie.isOn = false;
         }
-        else
+        /*else
         {
             ie.enabled = true;
-        }
+        }*/
         Debug.Log("Inelastic is: " + checkI);
         Debug.Log("elastic is: " + checkE);
     }
