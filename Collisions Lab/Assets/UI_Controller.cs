@@ -109,9 +109,9 @@ public class UI_Controller : MonoBehaviour
         {
             rbCartOne.AddForce(Vector3.right * force_1);
             rbCartTwo.AddForce(Vector3.right * force_2);
-            Debug.Log(rbCartOne.velocity.x);
+            
         }
-
+       // Debug.Log(rbCartOne.velocity.x);
         timeOfAppliedForce -= Time.fixedDeltaTime;
     }
 }
