@@ -36,6 +36,13 @@ public class UI_Controller : MonoBehaviour
     private float force_1;
     private float force_2;
 
+    private bool checkI = false;
+    private bool checkE = false;
+    public Toggle ie, e;
+
+    private BoxCollider box1;
+    private BoxCollider box2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +56,9 @@ public class UI_Controller : MonoBehaviour
         Renderer rend2 = cartTwo.GetComponent<Renderer>();
         rend2.material = cartTwoMat;
 
+        box1 = cartOne.GetComponent<BoxCollider>();
+        box2 = cartTwo.GetComponent<BoxCollider>();
+
         setStaticParameters();
     }
 
@@ -56,6 +66,16 @@ public class UI_Controller : MonoBehaviour
     {
         btnStart.interactable = false;
         txtSet.text = "Reset";
+        if (checkI == true)
+        {
+            box1.material.bounciness = 0;
+            box2.material.bounciness = 0;
+        }
+        else if (checkE == true)
+        {
+            box1.material.bounciness = 1;
+            box2.material.bounciness = 1;
+        }
         applyForce();
     }
 
@@ -63,6 +83,7 @@ public class UI_Controller : MonoBehaviour
     {
         btnStart.interactable = true;
         txtSet.text = "Set";
+        //rbCartOne.detectCollisions = true;
         setStaticParameters();
     }
 
@@ -97,13 +118,16 @@ public class UI_Controller : MonoBehaviour
         force_1 = float.Parse(txtForce1.text);
         force_2 = float.Parse(txtForce2.text);
 
-       // rbCartOne.drag = normalDrag;
-       // rbCartTwo.drag = normalDrag;
+        // rbCartOne.drag = normalDrag;
+        // rbCartTwo.drag = normalDrag;
+
+        rbCartOne.AddForce(force_1,0,0, ForceMode.Impulse);
+        //rbCartTwo.AddForce(Vector3.right * force_2);
 
         timeOfAppliedForce = 1f;
     }
 
-    private void FixedUpdate()
+   /* private void FixedUpdate()
     {
         if (timeOfAppliedForce > 0)
         {
@@ -113,5 +137,49 @@ public class UI_Controller : MonoBehaviour
         }
        // Debug.Log(rbCartOne.velocity.x);
         timeOfAppliedForce -= Time.fixedDeltaTime;
+    }*/
+
+    public void setCheck(bool inelastic)
+    {
+        checkI = inelastic;
+        if (checkI == true)
+        {
+            e.enabled = false;
+        }
+        else
+        {
+            e.enabled = true;
+        }
+
+        Debug.Log("Inelastic is: "+checkI);
+        Debug.Log("elastic is: " + checkE);
+    }
+
+    public void setCheckE(bool elastic)
+    {
+        checkE = elastic;
+        if (checkE == true)
+        {
+            ie.enabled = false;
+        }
+        else
+        {
+            ie.enabled = true;
+        }
+        Debug.Log("Inelastic is: " + checkI);
+        Debug.Log("elastic is: " + checkE);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (checkI == true)
+        {
+            FixedJoint joint = gameObject.AddComponent<FixedJoint>();
+            joint.anchor = collision.contacts[0].point;
+            joint.connectedBody = collision.contacts[1].otherCollider.transform.GetComponentInParent<Rigidbody>();
+            joint.enableCollision = false;
+            //rbCartOne.detectCollisions = false;
+        }
+
     }
 }
