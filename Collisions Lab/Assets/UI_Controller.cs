@@ -18,6 +18,12 @@ public class UI_Controller : MonoBehaviour
     public TMP_InputField txtMass2;
     public TMP_InputField txtForce2;
     public TMP_InputField txtPosition2;
+     
+    public TMP_Text lblInitialVelocity1;
+    public TMP_Text lblFinalVelocity1;
+
+    public TMP_Text lblInitialVelocity2;
+    public TMP_Text lblFinalVelocity2;
 
     public GameObject cartPrefab;
     private GameObject cartOne;
@@ -29,32 +35,36 @@ public class UI_Controller : MonoBehaviour
     private Rigidbody rbCartOne;
     private Rigidbody rbCartTwo;
 
+    private BoxCollider box1;
+    private BoxCollider box2;
+
+    private CartController cartOneController;
+    private CartController cartTwoController;
+
     private float force_1;
     private float force_2;
 
     public Toggle inelasticToggle, elasticToggle;
-
-    private BoxCollider box1;
-    private BoxCollider box2;
 
     // Start is called before the first frame update
     void Start()
     {
         cartOne = Instantiate(cartPrefab) as GameObject;
         rbCartOne = cartOne.GetComponent<Rigidbody>();
+        box1 = cartOne.GetComponent<BoxCollider>();
+        cartOneController = cartOne.GetComponent<CartController>();
         Renderer rend1 = cartOne.GetComponent<Renderer>();
         rend1.material = cartOneMat;
 
         cartTwo = Instantiate(cartPrefab) as GameObject;
         rbCartTwo = cartTwo.GetComponent<Rigidbody>();
+        box2 = cartTwo.GetComponent<BoxCollider>();
+        cartTwoController = cartTwo.GetComponent<CartController>();
         Renderer rend2 = cartTwo.GetComponent<Renderer>();
         rend2.material = cartTwoMat;
 
-        box1 = cartOne.GetComponent<BoxCollider>();
-        box2 = cartTwo.GetComponent<BoxCollider>();
-
         inelasticToggle.isOn = true;  
-
+        
         setStaticParameters();
     }
 
@@ -83,6 +93,7 @@ public class UI_Controller : MonoBehaviour
         txtSet.text = "Set";
         //rbCartOne.detectCollisions = true;
         setStaticParameters();
+        resetCollisionData();
     }
 
     private void setStaticParameters() 
@@ -106,6 +117,15 @@ public class UI_Controller : MonoBehaviour
 
         rbCartOne.angularVelocity = new Vector3(0, 0, 0);
         rbCartTwo.angularVelocity = new Vector3(0, 0, 0);
+    }
+
+    private void resetCollisionData() 
+    {
+        lblInitialVelocity1.text = "N/A";
+        lblFinalVelocity1.text = "N/A";
+
+        lblInitialVelocity2.text = "N/A";
+        lblFinalVelocity2.text = "N/A";
     }
 
     private void applyForce() 
@@ -138,6 +158,20 @@ public class UI_Controller : MonoBehaviour
             joint.connectedBody = collision.contacts[1].otherCollider.transform.GetComponentInParent<Rigidbody>();
             joint.enableCollision = false;
             //rbCartOne.detectCollisions = false;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (CartController.collisionFlag)
+        {
+            lblInitialVelocity1.text = cartOneController.initialVelocity.ToString();
+            lblFinalVelocity1.text = cartOneController.finalVelocity.ToString();
+
+            lblInitialVelocity2.text = cartTwoController.initialVelocity.ToString();
+            lblFinalVelocity2.text = cartTwoController.finalVelocity.ToString();
+
+            CartController.collisionFlag = false;
         }
     }
 }
