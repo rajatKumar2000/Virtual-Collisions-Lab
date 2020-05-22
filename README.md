@@ -12,15 +12,24 @@ This was made as a proof of concept, regarding our solution for the [Virtual Phy
 - Set the mass,force,and initial position of both cubes
 - Set the type of collision (elastic or inelastic)
 
-Gif goes here
+<p align="center" style="vertical-align: top; position: relative" >
+<img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Virtual-Collisions-Lab/blob/master/Media/UI_settings.gif" width="600"/>
+
+</p>
 
 ## Perfectly Inelastic Collisions
 
-Gif
+<p align="center" style="vertical-align: top; position: relative" >
+<img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Virtual-Collisions-Lab/blob/master/Media/Inelastic_collision.gif" width="600"/>
+
+</p>
 Data Table
 
 ## Elastic Collisions
 
-Gif 
+<p align="center" style="vertical-align: top; position: relative" >
+<img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Virtual-Collisions-Lab/blob/master/Media/elastic_collision.gif" width="600"/>
+
+</p>
 Data Table
 
