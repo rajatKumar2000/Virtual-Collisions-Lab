@@ -23,7 +23,18 @@ This was made as a proof of concept, regarding our solution for the [Virtual Phy
 <img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Virtual-Collisions-Lab/blob/master/Media/Inelastic_collision.gif" width="600"/>
 
 </p>
-Data Table
+
+<p align="center" style="vertical-align: top; position: relative" >
+<img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Virtual-Collisions-Lab/blob/master/Media/inelastic_equations.PNG" width="200"/>
+
+</p>
+
+<p align="center" style="vertical-align: top; position: relative" > 
+Using the above equations, we can calculate the theoretical final velocity of the inelastic collision in the gif.
+</p>
+
+<p align="center" style="vertical-align: top; position: relative" >
+<img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Virtual-Collisions-Lab/blob/master/Media/inelastic_table.PNG" width="600"/>
 
 ## Elastic Collisions
 
@@ -31,5 +42,16 @@ Data Table
 <img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Virtual-Collisions-Lab/blob/master/Media/elastic_collision.gif" width="600"/>
 
 </p>
-Data Table
+
+<p align="center" style="vertical-align: top; position: relative" >
+<img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Virtual-Collisions-Lab/blob/master/Media/inelastic_equations.PNG" width="200"/>
+
+</p>
+
+<p align="center" style="vertical-align: top; position: relative" > 
+Using the above equations, we can calculate the theoretical final velocities of the elastic collision in the gif.
+</p>
+
+<p align="center" style="vertical-align: top; position: relative" >
+<img align="top" style="vertical-align:top" src="https://github.com/rajatKumar2000/Virtual-Collisions-Lab/blob/master/Media/elastic_table.PNG" width="600"/>
 
